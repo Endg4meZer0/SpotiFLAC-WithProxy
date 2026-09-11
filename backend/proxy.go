@@ -3,7 +3,6 @@ package backend
 import (
 	"net/http"
 	"net/url"
-	"strconv"
 )
 
 func HTTPClientAppendProxySetting(c *http.Client) *http.Client {
@@ -14,7 +13,7 @@ func HTTPClientAppendProxySetting(c *http.Client) *http.Client {
 
 	scheme, ok := settings["proxyScheme"].(string)
 	addr, ok1 := settings["proxyAddr"].(string)
-	port, ok2 := settings["proxyPort"].(int)
+	port, ok2 := settings["proxyPort"].(string)
 	var proxyUrl *url.URL
 
 	if !ok || !ok1 || !ok2 {
@@ -25,10 +24,9 @@ func HTTPClientAppendProxySetting(c *http.Client) *http.Client {
 		return c
 	}
 
-	portString := strconv.Itoa(port)
 	proxyUrl = &url.URL{
 		Scheme: scheme,
-		Host:   addr + ":" + portString,
+		Host:   addr + ":" + port,
 	}
 
 	c.Transport = &http.Transport{

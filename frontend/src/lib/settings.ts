@@ -104,7 +104,7 @@ export interface Settings {
     metadataTags: MetadataTagToggles;
     proxyScheme: string;
     proxyAddr: string;
-    proxyPort: number;
+    proxyPort: string;
 }
 export const FOLDER_PRESETS: Record<FolderPreset, {
     label: string;
@@ -309,7 +309,7 @@ export const DEFAULT_SETTINGS: Settings = {
     },
     proxyScheme: "http",
     proxyAddr: "127.0.0.1",
-    proxyPort: 1080,
+    proxyPort: "1080",
 };
 export const FONT_OPTIONS: FontOption[] = [
     {
