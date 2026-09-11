@@ -397,7 +397,7 @@ type githubRelease struct {
 }
 
 func getLatestFFmpegReleaseTag() (string, error) {
-	client := &http.Client{Timeout: 15 * time.Second}
+	client := HTTPClientAppendProxySetting(&http.Client{Timeout: 15 * time.Second})
 
 	for page := 1; ; page++ {
 		apiURL := fmt.Sprintf("%s?per_page=100&page=%d", ffmpegReleasesAPIURL, page)
@@ -549,7 +549,7 @@ func downloadAndExtract(url, destDir string, progressCallback func(int), progres
 	defer os.Remove(tmpFile.Name())
 	defer tmpFile.Close()
 
-	client := &http.Client{}
+	client := HTTPClientAppendProxySetting(&http.Client{})
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
 		return fmt.Errorf("failed to create request: %w", err)

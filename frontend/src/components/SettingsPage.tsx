@@ -456,7 +456,7 @@ export function SettingsPage({ onUnsavedChangesChange, onResetRequest, }: Settin
             toast.error(t("translation.migrated.SettingsPage.failedToCheckQobuzDLInstance", { value1: error }));
         }
     };
-    const [activeTab, setActiveTab] = useState<"general" | "download" | "naming" | "files" | "metadata" | "status">("general");
+    const [activeTab, setActiveTab] = useState<"general" | "download" | "naming" | "files" | "metadata" | "proxy" | "status">("general");
     return (<div className="space-y-4 h-full flex flex-col">
       <div className="flex items-center justify-between shrink-0">
         <h1 className="text-2xl font-bold">{t("translation.common.settings")}</h1>
@@ -492,6 +492,10 @@ export function SettingsPage({ onUnsavedChangesChange, onResetRequest, }: Settin
         <Button variant={activeTab === "metadata" ? "default" : "ghost"} size="sm" onClick={() => setActiveTab("metadata")} className="rounded-b-none gap-2">
           <Tags className="h-4 w-4"/>
           {t("translation.common.metadata")}
+        </Button>
+        <Button variant={activeTab === "proxy" ? "default" : "ghost"} size="sm" onClick={() => setActiveTab("proxy")} className="rounded-b-none gap-2">
+          <Router className="h-4 w-4"/>
+          Proxy
         </Button>
         <Button variant={activeTab === "status" ? "default" : "ghost"} size="sm" onClick={() => setActiveTab("status")} className="rounded-b-none gap-2">
           <Router className="h-4 w-4"/>
@@ -1206,6 +1210,33 @@ export function SettingsPage({ onUnsavedChangesChange, onResetRequest, }: Settin
           </div>
 
         </div>)}
+
+        {activeTab === "proxy" && (() => {
+            return (<div className="space-y-6">
+              <div className="space-y-4 pl-7">
+                <div className="flex gap-3 flex-wrap">
+                  <div className="space-y-2"><Label htmlFor="proxy-scheme-lbl">Proxy scheme</Label><Select value={tempSettings.proxyScheme} onValueChange={(value: SettingsType["proxyScheme"]) => setTempSettings((prev) => ({ ...prev, proxyScheme: value }))}>
+                    <SelectTrigger id="proxy-scheme" className="w-32"><SelectValue /></SelectTrigger>
+                    <SelectContent><SelectItem value="no">Don't use proxy</SelectItem><SelectItem value="http">HTTP</SelectItem><SelectItem value="https">HTTPS</SelectItem></SelectContent>
+                  </Select></div>
+                </div>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="proxy-addr-lbl">Proxy address</Label>
+                <InputWithContext id="proxy-addr" value={tempSettings.proxyAddr} onChange={(e) => setTempSettings((prev) => ({
+                  ...prev,
+                  proxyAddr: e.target.value,
+                }))} placeholder="127.0.0.1"/>  
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="proxy-port-lbl">Proxy port</Label>
+                <InputWithContext id="proxy-port" value={tempSettings.proxyPort} onChange={(e) => setTempSettings((prev) => ({
+                  ...prev,
+                  proxyPort: e.target.value,
+                }))} placeholder="1080"/>  
+              </div>
+            </div>);
+        })()}
 
         {activeTab === "status" && (<ApiStatusTab />)}
       </div>

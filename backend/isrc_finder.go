@@ -68,7 +68,7 @@ func GetSpotifyTrackIdentifiersDirect(spotifyTrackID string) (SpotifyTrackIdenti
 		identifiers.ISRC = cachedISRC
 	}
 
-	httpClient := &http.Client{Timeout: 30 * time.Second}
+	httpClient := HTTPClientAppendProxySetting(&http.Client{Timeout: 30 * time.Second})
 
 	payload, metadataErr := fetchSpotifyTrackRawData(httpClient, normalizedTrackID)
 	if metadataErr == nil {
@@ -131,7 +131,7 @@ func lookupSpotifyAlbumUPC(albumID string) (string, error) {
 		return "", fmt.Errorf("spotify album ID is required")
 	}
 
-	httpClient := &http.Client{Timeout: 30 * time.Second}
+	httpClient := HTTPClientAppendProxySetting(&http.Client{Timeout: 30 * time.Second})
 	payload, err := fetchSpotifyAlbumRawData(httpClient, normalizedAlbumID)
 	if err != nil {
 		return "", err

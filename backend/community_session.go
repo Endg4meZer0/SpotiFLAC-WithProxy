@@ -204,7 +204,7 @@ func runCommunityVerification(record *communitySessionRecord) (string, error) {
 	query.Set("app_version", communityAppVersion())
 	query.Set("platform", "desktop")
 	bootstrap.RawQuery = query.Encode()
-	resp, err := (&http.Client{Timeout: 15 * time.Second}).Get(bootstrap.String())
+	resp, err := (HTTPClientAppendProxySetting(&http.Client{Timeout: 15 * time.Second})).Get(bootstrap.String())
 	if err != nil {
 		return "", fmt.Errorf("verification bootstrap failed: %w", err)
 	}
@@ -250,7 +250,7 @@ func exchangeCommunityGrant(record *communitySessionRecord, grant string) (*comm
 	if verifyBaseURL == "" {
 		return nil, fmt.Errorf("verification endpoint is unavailable")
 	}
-	resp, err := (&http.Client{Timeout: 15 * time.Second}).Post(verifyBaseURL+"/session/exchange", "application/json", bytes.NewReader(payload))
+	resp, err := (HTTPClientAppendProxySetting(&http.Client{Timeout: 15 * time.Second})).Post(verifyBaseURL+"/session/exchange", "application/json", bytes.NewReader(payload))
 	if err != nil {
 		return nil, err
 	}

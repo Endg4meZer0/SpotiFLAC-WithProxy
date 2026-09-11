@@ -22,9 +22,9 @@ type AmazonDownloader struct {
 
 func NewAmazonDownloader() *AmazonDownloader {
 	return &AmazonDownloader{
-		client: &http.Client{
+		client: HTTPClientAppendProxySetting(&http.Client{
 			Timeout: 120 * time.Second,
-		},
+		}),
 		regions: []string{"us", "eu"},
 	}
 }

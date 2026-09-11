@@ -58,12 +58,12 @@ type chatGPTResult struct {
 }
 
 func newLyricsTranslationClient() *http.Client {
-	return &http.Client{
+	return HTTPClientAppendProxySetting(&http.Client{
 		Timeout: 50 * time.Second,
 		CheckRedirect: func(_ *http.Request, _ []*http.Request) error {
 			return http.ErrUseLastResponse
 		},
-	}
+	})
 }
 
 func readLyricsResponseBounded(reader io.Reader, maximum int, provider string) ([]byte, error) {

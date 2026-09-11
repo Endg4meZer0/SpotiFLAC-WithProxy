@@ -227,9 +227,9 @@ func NewTidalDownloader(apiURL string) *TidalDownloader {
 		apiURL = ""
 	}
 	return &TidalDownloader{
-		client: &http.Client{
+		client: HTTPClientAppendProxySetting(&http.Client{
 			Timeout: 5 * time.Second,
-		},
+		}),
 		timeout:    5 * time.Second,
 		maxRetries: 3,
 		apiURL:     apiURL,
@@ -376,7 +376,7 @@ func (t *TidalDownloader) DownloadFile(url, filepath string, quality string) err
 		return fmt.Errorf("failed to create request: %w", err)
 	}
 
-	downloadClient := &http.Client{Timeout: 5 * time.Minute}
+	downloadClient := HTTPClientAppendProxySetting(&http.Client{Timeout: 5 * time.Minute})
 	resp, err := downloadClient.Do(req)
 
 	if err != nil {
@@ -418,9 +418,9 @@ func (t *TidalDownloader) DownloadFromManifest(manifestB64, outputPath string, q
 		return fmt.Errorf("requested %s quality but Tidal provided lossy format (%s). Aborting download", quality, mimeType)
 	}
 
-	client := &http.Client{
+	client := HTTPClientAppendProxySetting(&http.Client{
 		Timeout: 120 * time.Second,
-	}
+	})
 
 	doRequest := func(url string) (*http.Response, error) {
 		req, err := NewRequestWithDefaultHeaders(http.MethodGet, url, nil)

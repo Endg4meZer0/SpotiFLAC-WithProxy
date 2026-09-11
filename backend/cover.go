@@ -12,8 +12,9 @@ import (
 	"strings"
 	"time"
 
-	xdraw "golang.org/x/image/draw"
 	_ "image/jpeg"
+
+	xdraw "golang.org/x/image/draw"
 )
 
 const (
@@ -72,7 +73,7 @@ type CoverClient struct {
 
 func NewCoverClient() *CoverClient {
 	return &CoverClient{
-		httpClient: &http.Client{Timeout: 30 * time.Second},
+		httpClient: HTTPClientAppendProxySetting(&http.Client{Timeout: 30 * time.Second}),
 	}
 }
 

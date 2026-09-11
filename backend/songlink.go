@@ -79,9 +79,9 @@ type qobuzAvailabilityTrack struct {
 
 func NewSongLinkClient() *SongLinkClient {
 	return &SongLinkClient{
-		client: &http.Client{
+		client: HTTPClientAppendProxySetting(&http.Client{
 			Timeout: 30 * time.Second,
-		},
+		}),
 	}
 }
 
@@ -290,7 +290,7 @@ func getDeezerISRC(deezerURL string) (string, error) {
 
 	apiURL := fmt.Sprintf("https://api.deezer.com/track/%s", trackID)
 
-	client := &http.Client{Timeout: 10 * time.Second}
+	client := HTTPClientAppendProxySetting(&http.Client{Timeout: 10 * time.Second})
 	resp, err := client.Get(apiURL)
 	if err != nil {
 		return "", fmt.Errorf("failed to call Deezer API: %w", err)

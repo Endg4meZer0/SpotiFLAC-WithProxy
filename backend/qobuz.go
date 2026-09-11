@@ -75,9 +75,9 @@ var qobuzStreamingURLPattern = regexp.MustCompile(`https?://[^\s"'<>\\)]+`)
 
 func NewQobuzDownloader() *QobuzDownloader {
 	return &QobuzDownloader{
-		client: &http.Client{
+		client: HTTPClientAppendProxySetting(&http.Client{
 			Timeout: 60 * time.Second,
-		},
+		}),
 	}
 }
 
@@ -440,9 +440,9 @@ func (q *QobuzDownloader) GetDownloadURL(trackID int64, quality string, allowFal
 func (q *QobuzDownloader) DownloadFile(url, filepath string) error {
 	fmt.Println("Starting file download...")
 
-	downloadClient := &http.Client{
+	downloadClient := HTTPClientAppendProxySetting(&http.Client{
 		Timeout: 5 * time.Minute,
-	}
+	})
 
 	req, err := NewRequestWithDefaultHeaders(http.MethodGet, url, nil)
 	if err != nil {

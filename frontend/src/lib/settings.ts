@@ -102,6 +102,9 @@ export interface Settings {
     separator: "comma" | "semicolon";
     metadataDateFormat: "full" | "year";
     metadataTags: MetadataTagToggles;
+    proxyScheme: string;
+    proxyAddr: string;
+    proxyPort: number;
 }
 export const FOLDER_PRESETS: Record<FolderPreset, {
     label: string;
@@ -304,6 +307,9 @@ export const DEFAULT_SETTINGS: Settings = {
         upc: true,
         comment: true,
     },
+    proxyScheme: "http",
+    proxyAddr: "127.0.0.1",
+    proxyPort: 1080,
 };
 export const FONT_OPTIONS: FontOption[] = [
     {

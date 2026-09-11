@@ -316,7 +316,7 @@ func getQobuzAPICredentials(forceRefresh bool) (*qobuzAPICredentials, error) {
 		return qobuzCachedCredentials, nil
 	}
 
-	client := &http.Client{Timeout: 30 * time.Second}
+	client := HTTPClientAppendProxySetting(&http.Client{Timeout: 30 * time.Second})
 	scrapedCreds, scrapeErr := scrapeQobuzOpenCredentials(client)
 	if scrapeErr == nil {
 		if qobuzCredentialsSupportSignedMetadata(client, scrapedCreds) {
@@ -363,7 +363,7 @@ func newQobuzSignedRequest(method string, path string, params url.Values) (*http
 
 func doQobuzSignedRequest(method string, path string, params url.Values, client *http.Client) (*http.Response, error) {
 	if client == nil {
-		client = &http.Client{Timeout: 20 * time.Second}
+		client = HTTPClientAppendProxySetting(&http.Client{Timeout: 20 * time.Second})
 	}
 
 	call := func(forceRefresh bool) (*http.Response, error) {

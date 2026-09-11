@@ -270,9 +270,9 @@ func FetchMusicBrainzMetadata(isrc, title, artist, album string, useSingleGenre 
 		musicBrainzInflightMu.Unlock()
 	}()
 
-	client := &http.Client{
+	client := HTTPClientAppendProxySetting(&http.Client{
 		Timeout: musicBrainzRequestTimeout,
-	}
+	})
 
 	query := fmt.Sprintf("isrc:%s", isrc)
 	mbResp, err := queryMusicBrainzRecordings(client, query)

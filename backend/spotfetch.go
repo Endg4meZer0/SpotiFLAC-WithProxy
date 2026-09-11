@@ -41,7 +41,7 @@ type SpotifyClient struct {
 
 func NewSpotifyClient() *SpotifyClient {
 	return &SpotifyClient{
-		client:  &http.Client{Timeout: 30 * time.Second},
+		client:  HTTPClientAppendProxySetting(&http.Client{Timeout: 30 * time.Second}),
 		cookies: make(map[string]string),
 	}
 }
