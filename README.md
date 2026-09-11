@@ -20,10 +20,6 @@
         src="https://img.shields.io/badge/Announcements-369eff?labelColor=black&logo=telegram&logoColor=white" /></a>
     <br />
     <hr />
-    
-    > [!WARNING]
-    This fork only adds a very barebones ability to use HTTP(S) proxy to connect to Spotify/Tidal/etc. servers using said proxy. After a few commits it <i>works on my machine</i>™ and I can download stuff, so I consider my task done. No real further support should be expected, other than if it breaks after an update for me as well.
-
     <br />
     <a href="https://github.com/spotbye/SpotiFLAC/releases/latest" target="_blank"><img
         src="https://github.com/user-attachments/assets/ec33b07f-27a2-40bb-8215-8ad497abd82b" alt="Dark"
@@ -33,6 +29,9 @@
         width="49%" /></a>
   </p>
 </div>
+
+> [!WARNING]
+> This fork only adds a very barebones ability to use HTTP(S) proxy to connect to Spotify/Tidal/etc. servers using said proxy. After a few commits it <i>works on my machine</i>™ and I can download stuff, so I consider my task done. No real further support should be expected, other than if it breaks after an update for me as well.
 
 Please, support [the original project](https://github.com/spotbye/SpotiFLAC)!
 
