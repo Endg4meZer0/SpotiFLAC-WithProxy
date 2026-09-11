@@ -1,7 +1,4 @@
 <div align="left">
-  <a href="https://trendshift.io/repositories/15737" target="_blank"><img
-      src="https://trendshift.io/api/badge/repositories/15737" alt="afkarxyz%2FSpotiFLAC | Trendshift"
-      style="width: 250px; height: 55px;" width="250" height="55" /></a>
 
   <h1>SpotiFLAC</h1>
   <p>
@@ -22,6 +19,9 @@
       href="https://t.me/spotiflac"><img
         src="https://img.shields.io/badge/Announcements-369eff?labelColor=black&logo=telegram&logoColor=white" /></a>
     <br />
+    <hr />
+    > [!WARNING]
+    This fork only adds a very barebones ability to use HTTP(S) proxy to connect to Spotify/Tidal/etc. servers using said proxy. After a few commits it <i>works on my machine</i>™ and I can download stuff, so I consider my task done. No real further support should be expected, other than if it breaks after an update for me as well.
     <br />
     <a href="https://github.com/spotbye/SpotiFLAC/releases/latest" target="_blank"><img
         src="https://github.com/user-attachments/assets/ec33b07f-27a2-40bb-8215-8ad497abd82b" alt="Dark"
@@ -32,85 +32,9 @@
   </p>
 </div>
 
-### [Download](https://github.com/spotbye/SpotiFLAC/releases/latest)
+Please, support [the original project](https://github.com/spotbye/SpotiFLAC)!
 
-## Other projects
-
-### [SpotiFLAC Next](https://github.com/spotbye/SpotiFLAC-Next)
-
-Get Spotify tracks in true Lossless from Tidal, Qobuz, Amazon Music & Deezer — no account required.
-
-### [SpotubeDL.com](https://spotubedl.com)
-
-Download Spotify Tracks, Albums, Playlists & Discography as MP3/OGG/Opus.
-
-## Related projects
-
-> [!NOTE]
->
-> Related projects are maintained by the community and are not affiliated with the core SpotiFLAC desktop build.
-
-### [SpotiFLAC (Mobile)](https://github.com/zarzet/SpotiFLAC-Mobile)
-
-SpotiFLAC for Android & iOS — maintained by [@zarzet](https://github.com/zarzet)
-
-### [SpotiFLAC (Python Module)](https://github.com/BartolomeoRusso9/SpotiFLAC-Module-Version)
-
-SpotiFLAC Python library for SpotiFLAC integration — maintained by [@BartolomeoRusso9](https://github.com/BartolomeoRusso9)
-
-## FAQ
-
-<details>
-<summary>Is this software free?</summary>
-
-_Yes. This software is completely free.
-You do not need an account, login, or subscription.
-All you need is an internet connection._
-
-</details>
-
-<details>
-<summary>Can using this software get my Spotify account suspended or banned?</summary>
-
-_No.
-This software has no connection to your Spotify account.
-Spotify data is obtained through reverse engineering of the Spotify Web Player, not through user authentication._
-
-</details>
-
-<details>
-<summary>Where does the audio come from?</summary>
-
-_The audio is fetched using third-party APIs._
-
-</details>
-
-<details>
-<summary>Why does metadata fetching sometimes fail?</summary>
-
-_This usually happens because your IP address has been rate-limited.
-You can wait and try again later, or use a VPN to bypass the rate limit._
-
-</details>
-
-<details>
-<summary>Why does Windows Defender or antivirus flag or delete the file?</summary>
-
-_This is a false positive.
-It likely happens because the executable is compressed using UPX._
-
-_If you are concerned, you can fork the repository and build the software yourself from source._
-
-</details>
-
-<details>
-<summary>Want to support the project?</summary>
-
-_If this software is useful and brings you value,
-consider supporting the project by buying me a coffee.
-Your support helps keep development going._
-
-</details>
+### [Download this fork](https://github.com/Endg4meZer0/SpotiFLAC/releases/latest)
 
 ## Disclaimer
 
@@ -129,7 +53,3 @@ The software is provided "as is", without warranty of any kind. The author assum
 ## API Credits
 
 [MusicBrainz](https://musicbrainz.org) · [LRCLIB](https://lrclib.net) · [Songlink/Odesli](https://song.link) · [Songstats](https://songstats.com) · [hifi-api](https://github.com/binimum/hifi-api) · [Qobuz-DL](https://github.com/QobuzDL/Qobuz-DL)
-
-> [!TIP]
->
-> **Star Us**, You will receive all release notifications from GitHub without any delay ~
