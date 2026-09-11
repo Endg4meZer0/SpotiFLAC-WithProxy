@@ -307,7 +307,7 @@ export const DEFAULT_SETTINGS: Settings = {
         upc: true,
         comment: true,
     },
-    proxyScheme: "http",
+    proxyScheme: "no",
     proxyAddr: "127.0.0.1",
     proxyPort: "1080",
 };

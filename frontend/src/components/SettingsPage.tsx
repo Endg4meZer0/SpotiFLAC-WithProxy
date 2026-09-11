@@ -1213,7 +1213,7 @@ export function SettingsPage({ onUnsavedChangesChange, onResetRequest, }: Settin
 
         {activeTab === "proxy" && (() => {
             return (<div className="space-y-6">
-              <div className="space-y-4 pl-7">
+              <div className="space-y-4">
                 <div className="flex gap-3 flex-wrap">
                   <div className="space-y-2"><Label htmlFor="proxy-scheme-lbl">Proxy scheme</Label><Select value={tempSettings.proxyScheme} onValueChange={(value: SettingsType["proxyScheme"]) => setTempSettings((prev) => ({ ...prev, proxyScheme: value }))}>
                     <SelectTrigger id="proxy-scheme" className="w-32"><SelectValue /></SelectTrigger>
